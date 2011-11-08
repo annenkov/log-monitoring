@@ -1,0 +1,47 @@
+[W 2011-10-04 23:11:14,842 payworld.payment@notifications:76] Transaction #0000006 status changed to "failed" due to exception in process_notification_gorod (current user ""):Insufficient funds
+[W 2011-10-04 23:11:16,875 payworld.payment@processing:204] Transaction #0000010 status changed to "failed" due to exception in process_account_payment (current user "user@pay-world.ru"):Insufficient funds
+[E 2011-10-04 23:11:17,765 payworld.payment@sendservice:34] Error in url_send. Transaction #0000011
+Traceback (most recent call last):
+  File "D:\Global_project\python\payworld\payworld\payment\service\sendservice.py", line 32, in url_send
+    urllib2.urlopen(url, urllib.urlencode(data), timeout=timeout)
+  File "C:\Python27\lib\urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "C:\Python27\lib\urllib2.py", line 391, in open
+    response = self._open(req, data)
+  File "C:\Python27\lib\urllib2.py", line 409, in _open
+    '_open', req)
+  File "C:\Python27\lib\urllib2.py", line 369, in _call_chain
+    result = func(*args)
+  File "C:\Python27\lib\urllib2.py", line 1173, in http_open
+    return self.do_open(httplib.HTTPConnection, req)
+  File "C:\Python27\lib\urllib2.py", line 1148, in do_open
+    raise URLError(err)
+URLError: <urlopen error [Errno 11001] getaddrinfo failed>
+[E 2011-10-04 23:11:17,875 payworld.payment@processing:195] Transaction #0000011 status changed to "not_sent" due to exception in process_account_payment (current user "user@pay-world.ru"):
+Traceback (most recent call last):
+  File "D:\Global_project\python\payworld\payworld\payment\views\processing.py", line 180, in process_account_payment
+    dispatch_sending(tx)
+  File "D:\Global_project\python\payworld\payworld\payment\service\sendservice.py", line 69, in dispatch_sending
+    result_url_send(transaction)
+  File "D:\Global_project\python\payworld\payworld\payment\service\sendservice.py", line 42, in result_url_send
+    url_send(transaction, transaction.data.shop.result_url)
+  File "D:\Global_project\python\payworld\payworld\payment\service\sendservice.py", line 35, in url_send
+    raise SendingError(_('Error while sending data to seller: %s') % e.reason)
+SendingError: Error while sending data to seller: [Errno 11001] getaddrinfo failed
+[E 2011-10-04 23:11:18,187 payworld.payment@sendservice:34] Error in url_send. Transaction #0000012
+Traceback (most recent call last):
+  File "D:\Global_project\python\payworld\payworld\payment\service\sendservice.py", line 32, in url_send
+    urllib2.urlopen(url, urllib.urlencode(data), timeout=timeout)
+  File "C:\Python27\lib\urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "C:\Python27\lib\urllib2.py", line 391, in open
+    response = self._open(req, data)
+  File "C:\Python27\lib\urllib2.py", line 409, in _open
+    '_open', req)
+  File "C:\Python27\lib\urllib2.py", line 369, in _call_chain
+    result = func(*args)
+  File "C:\Python27\lib\urllib2.py", line 1173, in http_open
+    return self.do_open(httplib.HTTPConnection, req)
+  File "C:\Python27\lib\urllib2.py", line 1148, in do_open
+    raise URLError(err)
+URLError: <urlopen error [Errno 11001] getaddrinfo failed>

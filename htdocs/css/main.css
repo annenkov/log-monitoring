@@ -1,0 +1,255 @@
+/*
+Original design: Variant Dark (v1.0 - Feb 15, 2010) - A free xhtml/css website template by Andreas Viklund.
+For more information, see http://andreasviklund.com/templates/variant-dark/
+*/
+
+/* Main containers */
+body {
+    padding: 0;
+    margin: 0;
+    font: 76% Verdana, Tahoma, sans-serif;
+    background-color: #080808;
+    color: #ddd;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+#wrap {
+    text-align: left;
+    margin: 0 100px;
+    padding: 20px 0 0 0;
+}
+
+/* Header */
+#header {
+    width: 100%;
+    margin: 0;
+    background-color: #111;
+    border-top: 1px dotted #2a2a2a;
+    border-bottom: 1px dotted #2a2a2a;
+}
+
+#title {
+    width: 980px;
+    padding: 30px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    margin: 0 auto 5px auto;
+    padding: 0;
+    font-size: 2.2em;
+    font-weight: 400;
+    color: #eee;
+    letter-spacing: -1px;
+    line-height: 1.2em;
+}
+
+h1 a {
+    color: #eee;
+    font-weight: 400;
+    text-decoration: none;
+    border: 0;
+}
+
+h1 a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* HTML Tags */
+a {
+    text-decoration: none;
+    font-weight: 400;
+    color: #f7c777;
+    border-bottom: 1px dotted #2a2a2a;
+}
+
+a:hover {
+    text-decoration: none;
+    border-bottom: 1px dotted #f7c777;
+}
+
+a img {
+    border: 0;
+}
+
+h2 {
+    margin: 0 0 18px 0;
+    padding: 0 0 7px;
+    color: #77cef7;
+    font-size: 1.6em;
+    font-weight: 400;
+    border-bottom: 1px dotted #2a2a2a;
+}
+
+h2 a {
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.6em;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+    padding: 2px 0;
+    color: #77cef7;
+    font-size: 1.2em;
+    font-weight: 400;
+    border-bottom: 1px dotted #2a2a2a;
+}
+
+p {
+    margin: 0 0 18px 0;
+}
+
+ul {
+    margin: 0 0 18px 20px;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0 0 0 5px;
+}
+
+/* Sidebars */
+#sidebar {
+    width: 160px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    color: #eee;
+}
+
+#sidebar h2 {
+    font-size: 1.3em;
+    padding-bottom: 3px;
+    border-bottom: 1px dotted #2a2a2a;
+    margin-bottom: 5px;
+}
+
+#sidebar ul {
+    list-style: none;
+    margin: 0 0 15px 0;
+}
+
+#sidebar ul ul {
+    list-style: none;
+    margin: 0 0 0 15px;
+    font-size: 0.9em;
+}
+
+#sidebar li {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Content area */
+#content {
+    text-align: left;
+    padding: 5px 0;
+    margin: 0 50px 15px 180px;
+}
+
+#content img {
+    margin: 5px 0;
+}
+
+.post {
+    margin: 0 0 20px 0;
+    padding: 15px 20px 0 20px;
+    line-height: 1.7em;
+    border: 1px dotted #2a2a2a;
+}
+
+.postintro {
+    padding: 4px;
+    background-color: #000;
+    text-align: left;
+    color: #777;
+    font-size: 1.1em;
+    float: right;
+    border: 1px dotted #2a2a2a;
+    margin: 0 15px 10px 15px;
+}
+
+/* Log styles*/
+
+#log-contents {
+    margin-top: 20px;
+}
+
+#log-contents span {
+    padding-right: 5px;
+}
+
+#log-contents .bracket {
+    color: #752b00;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.Error {
+    color:  #cc0000;
+}
+
+.Warning {
+    color: #446bff;
+}
+
+.Info {
+    color: #F7C777;
+}
+
+.Error, .Warning, .Info {
+    font-weight: bold;
+}
+
+.Log-date {
+    color: #336600;
+}
+
+.Logger {
+    color: #ff7c00;
+}
+
+.Error-message {
+    color: #d45f5f;
+}
+
+.Warning-message, .Info-message{
+    color: #F7C777;
+}
+
+/* Footer */
+#footer {
+    font-size: 0.9em;
+    line-height: 1.4em;
+    color: #777;
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+#footer a {
+    color: #777;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px dotted #888;
+}
+
+/* Various classes */
+.centered {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.clear {
+    clear: both;
+    visibility: hidden;
+}

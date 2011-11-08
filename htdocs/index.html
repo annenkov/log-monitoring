@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="js/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="js/jquery.tmpl.min.js" type="text/javascript"></script>
+    <title>PayWorld Log Monitor</title>
+</head>
+<script type="text/javascript">
+    function nl2br (str, is_xhtml) {
+        var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+        return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+    }
+
+    function startLoadingAnimation(){
+        $("#log-contents").empty();
+        $("#loading-animation").show();
+    }
+
+    function stopLoadingAnimation(){
+        $("#loading-animation").hide();
+    }
+
+    function renderLog(log){
+        log_data = log.log_data;
+        for (var index in log_data) {
+            msg = log_data[index].msg;
+            log_data[index].msg = nl2br(msg, true)
+        }
+        $('#err-count').text(log.log_statistics.errors);
+        $('#warn-count').text(log.log_statistics.warnings);
+        $('#info-count').text(log.log_statistics.infos);
+        $("#log-contents").empty();
+        $("#log-template").tmpl(log_data).appendTo($("#log-contents"))
+    }
+
+    $.get("/log").success(function(log) {
+        stopLoadingAnimation();
+        renderLog(log);
+    });
+    startLoadingAnimation();
+    $(function(){
+        $('#filter-options').submit(function(){
+            var filters_str = '';
+            $('#filter-options').find('input[type=checkbox]:checked').each(function(){
+                filters_str += $(this).attr('name').charAt(0).toUpperCase();
+            });
+            $.get("/log", {filters:filters_str}).success(function(log) {
+                stopLoadingAnimation();
+                renderLog(log);
+            });
+            startLoadingAnimation();
+            return false;
+        })
+    })
+</script>
+
+<script id="log-template" type="text/x-jquery-tmpl">
+    <p><span class="bracket">[</span>
+        <span class="${type}">${type}</span><span class="Log-date">${date} ${time}</span>
+        <span class="Logger">${logger} @"@" ${place}</span>
+        <span class="bracket">]</span>
+        <br />
+        <span class="${type}-message">{{html msg}}</span></p>
+</script>
+
+<body>
+<div id="header">
+    <h1>Log Statistics</h1>
+</div>
+
+<div id="wrap">
+    <div id="sidebar">
+        <form id="filter-options">
+            <ul class="sidemenu">
+                <li><h2>Select Options</h2></li>
+                <li><input type="checkbox" checked="checked" name="info"> Info</li>
+                <li><input type="checkbox" checked="checked" name="warning"> Warning</li>
+                <li><input type="checkbox" checked="checked" name="error"> Error</li>
+            </ul>
+            <input type="submit" value="Go">
+        </form>
+    </div>
+
+    <div id="content">
+        <div class="post">
+            <div class="postintro"><span class="Error">Errors: </span><span id="err-count"></span><br />
+                <span class="Warning">Warnings: </span><span id="warn-count"></span><br />
+                <span class="Info">Infos: </span><span id="info-count"></span><br />
+            </div>
+
+            <h2>Log contents:</h2>
+            <div id="loading-animation" style='text-align:center; padding:30px;'>
+                <img src='/images/2.gif' alt='loading...'/>
+            </div>
+            <div id="log-contents">
+
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>Copyright &copy; 2011 <a href="index.html">IB-Soft</a></p>
+    </div>
+</div>
+</body>
+</html>
