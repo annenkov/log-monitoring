@@ -1,7 +1,8 @@
 #lang racket
 (require web-server/templates
          web-server/http/response-structs
-         web-server/http/bindings)
+         web-server/http/bindings
+         web-server/dispatchers/dispatch-passwords)
 (require (planet dherman/json:3:0))
 (require "../parse.rkt")
 
