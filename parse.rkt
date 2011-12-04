@@ -60,7 +60,7 @@
                     (parser in)])
         (if (succeeded? val) 
             (fail in)
-        (values #t new-in)))))
+        (values #t in)))))
 
 (define (parse-string-of parser)
   (seq value <- (one-many parser)
