@@ -60,6 +60,7 @@
     <p><span class="bracket">[</span>
         <span class="${type}">${type}</span><span class="Log-date">${date} ${time}</span>
         <span class="Logger">${logger} @"@" ${place}</span>
+	{{if tx_id}}<span class="Transaction">${tx_id}</span> {{/if}}
         <span class="bracket">]</span>
         <br />
         <span class="${type}-message">{{html msg}}</span></p>

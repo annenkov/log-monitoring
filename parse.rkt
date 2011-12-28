@@ -10,9 +10,6 @@
 (define (load-log)
   (file->string log-file))
 
-(define test-log-string
-  "[W 2011-10-04 23:11:14,842 payworld.payment@notifications:76]11\r\n[W 2011-10-04 23:11:16,875 payworld.payment@processing:204] Transaction #0000010 status changed to \"failed\" due to exception in process_account_payment (current user \"user@pay-world.ru\"):Insufficient funds\r\n[W 2011-10-04 23:11:14,842 payworld.payment@notifications:76] Transaction #0000006 status changed to \"failed\" due to exception in process_notification_gorod (current user \"\"):Insufficient funds\r\n[W 2011-10-04 23:11:16,875 payworld.payment@processing:204] Transaction #0000010 status changed to \"failed\" due to exception in process_account_payment (current user \"user@pay-world.ru\"):Insufficient funds\r\n")
-
 (define LOG-ENTRY-TYPES
   #hash([#\E . "Error"]
         [#\W . "Warning"]
@@ -35,12 +32,15 @@
            logger <- parse-logger
            #\@
            place <- parse-place
+           tx-id <- (choice parse-tx-id
+                            (return #\null))
            #\]
            (return `(["type" . ,(hash-ref LOG-ENTRY-TYPES type)]
                      ["date" . ,date]
                      ["time" . ,time]
                      ["logger" . ,logger]
-                     ["place" . ,place]))))
+                     ["place" . ,place]
+                     ["tx_id" . ,tx-id]))))
 
 (define message
   (seq msg <- (one-many (seq (check-not entry-header)
@@ -77,6 +77,11 @@
 
 (define parse-place
   (parse-string-of (choice word (char= #\:))))
+
+(define parse-tx-id
+  (seq #\# 
+       tx-id <- (parse-string-of digit)
+       (return tx-id)))
 
 
 ;;;;; filters predicates
