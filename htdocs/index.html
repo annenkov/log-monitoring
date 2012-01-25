@@ -35,7 +35,7 @@
         $("#log-template").tmpl(log_data).appendTo($("#log-contents"))
     }
 
-    $.get("/log").success(function(log) {
+    $.get("log").success(function(log) {
         stopLoadingAnimation();
         renderLog(log);
     });
@@ -46,7 +46,7 @@
             $('#filter-options').find('input[type=checkbox]:checked').each(function(){
                 filters_str += $(this).attr('name').charAt(0).toUpperCase();
             });
-            $.get("/log", {filters:filters_str}).success(function(log) {
+            $.get("log", {filters:filters_str}).success(function(log) {
                 stopLoadingAnimation();
                 renderLog(log);
             });
@@ -93,7 +93,7 @@
 
             <h2>Log contents:</h2>
             <div id="loading-animation" style='text-align:center; padding:30px;'>
-                <img src='/images/2.gif' alt='loading...'/>
+                <img src='images/2.gif' alt='loading...'/>
             </div>
             <div id="log-contents">
 
