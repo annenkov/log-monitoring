@@ -1,3 +1,4 @@
+[D 2011-10-04 23:11:17,765 some.package@module:16] Debug info
 [W 2011-10-04 23:11:14,842 some.package@module:16 #0000006] Transaction #0000006 status changed to "failed" due to exception in process_notification_gorod (current user ""):Insufficient funds
 [W 2011-10-04 23:11:16,875 some.package@module:26] Transaction #0000010 status changed to "failed" due to exception in process_account_payment (current user "user@pay-world.ru"):Insufficient funds
 [E 2011-10-04 23:11:17,765 some.package@module:56] Error in url_send. Transaction #0000011

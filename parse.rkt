@@ -13,7 +13,8 @@
 (define LOG-ENTRY-TYPES
   #hash([#\E . "Error"]
         [#\W . "Warning"]
-        [#\I . "Info"]))
+        [#\I . "Info"]
+        [#\D . "Debug"]))
 
 (define (parse-log)
   ((make-reader log-entries) (load-log)))
@@ -26,7 +27,7 @@
 
 (define header
   (tokens  #\[
-           type <- (char-in '(#\E #\W #\I))
+           type <- (char-in '(#\E #\W #\I #\D))
            date <- parse-date
            time <- parse-time
            logger <- parse-logger

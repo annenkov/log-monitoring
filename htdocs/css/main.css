@@ -204,7 +204,11 @@ li {
     color: #F7C777;
 }
 
-.Error, .Warning, .Info {
+.Debug {
+    color: #9F9F9F;
+}
+
+.Error, .Warning, .Info, .Debug {
     font-weight: bold;
 }
 
@@ -220,9 +224,10 @@ li {
     color: #d45f5f;
 }
 
-.Warning-message, .Info-message{
+.Warning-message, .Info-message, .Debug-message{
     color: #F7C777;
 }
+
 
 /* Footer */
 #footer {
