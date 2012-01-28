@@ -77,7 +77,7 @@
   (parse-string-of (choice word (char= #\.))))
 
 (define parse-place
-  (parse-string-of (choice word (char= #\:))))
+  (parse-string-of (choice word (char-in '(#\: #\-)))))
 
 (define parse-tx-id
   (seq #\# 
